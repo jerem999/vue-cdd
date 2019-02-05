@@ -106,8 +106,10 @@
 	<!-- To stops the page from jumping when a link is clicked we use the "prevent" modifier (short for preventDefault). -->
 
 	<nav>
-		<input type="date" v-model='start' class="start">Date de Début de contrat</input>
-		<input type="date" v-model='end' class="end">Date de Fin de contrat</input>
+		<input type="date" v-model='start' class="start"> Date de Début de contrat</input></br>
+		<input type="date" v-model='end' class="end"> Date de Fin de contrat</input></br>
+		<input v-model='time' class="time"> heure(s)</input>
+
 	</nav>
     <div class="card">
         <div class="card-body">
@@ -117,7 +119,9 @@
 				<span>nombre de jours travaillés :</span>
 				<span>{{getDate()}}</span></br>
 				<span>nombre de congés :</span>
-				<span>{{getHolyday()}}</span>
+				<span>{{getHolyday()}}</span></br>
+				<span>nombre de congés :</span>
+				<span>{{getETP()}}</span>
 		</div>
     </div>
 
@@ -140,7 +144,8 @@ var demo = new Vue({
 		start: " ",
 		end: " ",
 		date: " ",
-		getHolyday: " "
+		getHolyday: " ",
+		time: " "
 
 	},
 
@@ -151,6 +156,9 @@ var demo = new Vue({
 		},
 		getHolyday: function () {
 			return moment(moment(this.end) - moment(this.start)).format('DD') * 2.08 / 28
+		},
+		getETP: function () {
+			return this.time / 35
 		}
 	}
 });
