@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
     <title>Exercice1</title>
@@ -106,13 +106,19 @@
 	<!-- To stops the page from jumping when a link is clicked we use the "prevent" modifier (short for preventDefault). -->
 
 	<nav>
-		<input type="date" href="#" class="start">Date de Début de contrat</input>
-		<input type="date" href="#" class="end">Date de Fin de contrat</input>
-    </nav>
+		<input type="date" v-model='start' class="start">Date de Début de contrat</input>
+		<input type="date" v-model='end' class="end">Date de Fin de contrat</input>
+	</nav>
     <div class="card">
         <div class="card-body">
             <a href="#" class="btn btn-primary">Go somewhere</a>
-        </div>
+		</div>
+		<div>
+				<span>nombre de congés :</span>
+				<span>{{date}}</span></br>
+				<span>{{start}}</span></br>
+				<span>{{getDate()}}</span></br>
+		</div>
     </div>
 
  	<!-- The mustache expression will be replaced with the value of "active".
@@ -121,6 +127,7 @@
 </div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.0.5/vue.min.js"></script>
+<script src="https://rawgit.com/moment/moment/2.2.1/min/moment.min.js"></script>
 <script>
 // Creating a new Vue instance and pass in an options object.
 var demo = new Vue({
@@ -130,14 +137,16 @@ var demo = new Vue({
 
 	// Define properties and give them initial values.
 	data: {
-		active: 'home'
+		start: "",
+		end: "",
+		date: ""
+
 	},
 
 	// Functions we will be using.
 	methods: {
-		makeActive: function(item){
-			// When a model is changed, the view will be automatically updated.
-			this.active = item;
+		getDate: function () {
+			return moment(moment(this.end) - moment(this.start)).format('DD')
 		}
 	}
 });
