@@ -43,8 +43,6 @@
 	nav{
 		display:inline-block;
 		margin:60px auto 45px;
-		background-color:#5597b4;
-		box-shadow:0 1px 1px #ccc;
 		border-radius:2px;
 	}
 
@@ -106,9 +104,24 @@
 	<!-- To stops the page from jumping when a link is clicked we use the "prevent" modifier (short for preventDefault). -->
 
 	<nav>
-		<input type="date" v-model='start' class="start"> Date de Début de contrat</input></br>
-		<input type="date" v-model='end' class="end"> Date de Fin de contrat</input></br>
-		<input v-model='time' class="time"> heure(s)</input>
+		<div class="input-group mb-3 no-margin">
+				<div class="input-group-prepend">
+					<span class="input-group-text" id="inputGroup-sizing-default">Date de Début de contrat :</span>
+				</div>
+				<input type="date" v-model='start' class="start"></input>
+			</div>
+		<div class="input-group mb-3 no-margin">
+			<div class="input-group-prepend">
+				<span class="input-group-text" id="inputGroup-sizing-default">Date de Fin de contrat :</span>
+			</div>
+			<input type="date" v-model='end' class="end"></input>
+		</div>
+		<div class="input-group mb-3 no-margin">
+			<div class="input-group-prepend">
+				<span class="input-group-text" id="inputGroup-sizing-default">heures :</span>
+			</div>
+			<input v-model='time' class="time"></input>
+		</div>
 
 	</nav>
     <div class="card">
