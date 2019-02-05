@@ -118,6 +118,7 @@
 				<span>{{date}}</span></br>
 				<span>{{start}}</span></br>
 				<span>{{getDate()}}</span></br>
+				<span>{{getHolyday()}}</span>
 		</div>
     </div>
 
@@ -137,9 +138,10 @@ var demo = new Vue({
 
 	// Define properties and give them initial values.
 	data: {
-		start: "",
-		end: "",
-		date: ""
+		start: " ",
+		end: " ",
+		date: " ",
+		getHolyday: " "
 
 	},
 
@@ -147,6 +149,9 @@ var demo = new Vue({
 	methods: {
 		getDate: function () {
 			return moment(moment(this.end) - moment(this.start)).format('DD')
+		},
+		getHolyday: function () {
+			return moment(moment(this.end) - moment(this.start)).format('DD') * 2.08 / 28
 		}
 	}
 });
